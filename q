@@ -1,23 +1,22 @@
 class Solution {
 public:
-    string longestCommonPrefix(vector<string>& strs) {
-        sort(strs.begin(),strs.end());
-        int n=strs.size();
-        string ans="";
-        int l=0,r=0;
-        while(l<strs[0].length() && r<strs[n-1].length())
+    int reverse(int x) {
+        int temp=abs(x);
+        string s=to_string(temp);
+        string an="";
+        int l=0;int r=s.length()-1;
+        while(l<r)
         {
-            if(strs[0][l]==strs[n-1][r])
-            {
-                ans+=strs[0][l];
-                l++;
-                r++;
-            }
-            else
-                break;
-            
+            swap(s[l++],s[r--]);
         }
+        cout<<s;
+        long long ans=stoll(s);
+        if(ans>INT_MAX)
+            return 0;
+        if(x<0)
+            return -ans;
         return ans;
         
+       
     }
 };
